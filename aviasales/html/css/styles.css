@@ -16,13 +16,23 @@
 :root {
     --text-color: #4A4A4A;
     --text-accent-color: #2196F3;
-    --bg-color: #E5E5E5;
+    --bg-color: #F3F7FA;
+    --bg-color-items: white;
     --bg-selected-color: #2196F3;
     --bg-hover-color: #F1FCFF;
+    --border-color: #DFE5EC;
 }
 
-* {
+html,
+*,
+*::after,
+*::before {
     box-sizing: border-box;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: none;
 }
 
 body {
@@ -30,5 +40,91 @@ body {
     font-weight: 400;
     font-style: normal;
     text-rendering: auto;
-    background-color: #F3F7FA;
+    background-color: var(--bg-color);
+    padding: 50px;
+}
+
+.logo {
+    width: 82px;
+    height: 89px;
+    margin: 0px auto 50px auto;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.sidebar {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.filter {
+    background: var(--bg-color-items);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    color: var(--text-color);
+}
+
+.filter__title {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter__items {
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 20px;
+}
+
+.ticket {
+    background: var(--bg-color-items);
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.tabs {
+    border-radius: 5px;
+    overflow: hidden ;
+    background-color: var(--bg-color-items);
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: var(--text-color);
+}
+
+.tabs__items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.tabs__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
