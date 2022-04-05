@@ -24,20 +24,20 @@
                     <h4 class="filter__title">Количество пересадок</h4>
                     <div class="filter__items">
                         <div class="filter__item">
-                            <input type="checkbox" name="" id="">
-                            <label for="">Без пересадок</label>
+                            <input class="filter__check" type="checkbox" name="" id="var1" >
+                            <label class="filter__label filter__label--checkbox" for="var1">Без пересадок</label>
                         </div>
                         <div class="filter__item">
-                            <input type="checkbox" name="" id="">
-                            <label for="">1 пересадка</label>
+                            <input class="filter__check" type="checkbox" name="" id="var2" >
+                            <label class="filter__label filter__label--checkbox" for="var2">1 пересадка</label>
                         </div>
                         <div class="filter__item">
-                            <input type="checkbox" name="" id="">
-                            <label for="">2 пересадки</label>
+                            <input class="filter__check" type="checkbox" name="" id="var3">
+                            <label class="filter__label filter__label--checkbox" for="var3">2 пересадки</label>
                         </div>
                         <div class="filter__item">
-                            <input type="checkbox" name="" id="">
-                            <label for="">3 пересадки</label>
+                            <input class="filter__check" type="checkbox" name="" id="var4">
+                            <label class="filter__label filter__label--checkbox" for="var4">3 пересадки</label>
                         </div>
                     </div>
                 </div>
@@ -45,16 +45,16 @@
                     <h4 class="filter__title">Компания</h4>
                     <div class="filter__items">
                         <div class="filter__item">
-                            <input type="radio" name="" id="">
-                            <label for="">Все</label>
+                            <input class="filter__check" type="radio" name="radio" id="radio1" checked>
+                            <label class="filter__label filter__label--radio" for="radio1">Все</label>
                         </div>
                         <div class="filter__item">
-                            <input type="radio" name="" id="">
-                            <label for="">S7 Airlines</label>
+                            <input class="filter__check" type="radio" name="radio" id="radio2">
+                            <label class="filter__label filter__label--radio" for="radio2">S7 Airlines</label>
                         </div>
                         <div class="filter__item">
-                            <input type="radio" name="" id="">
-                            <label for="">XiamenAir</label>
+                            <input class="filter__check" type="radio" name="radio" id="radio3">
+                            <label class="filter__label filter__label--radio" for="radio3">XiamenAir</label>
                         </div>
                     </div>
                 </div>
@@ -63,16 +63,16 @@
                 <div class="tabs">
                     <div class="tabs__items">
                         <div class="tabs__item">
-                            <input type="radio" name="" id="lowprice">
-                            <label for="lowprice">Самый дешевый</label>
+                            <input class="tabs__check" type="radio" name="tabs" id="lowprice">
+                            <label class="tabs__label" for="lowprice">Самый дешевый</label>
                         </div>
                         <div class="tabs__item">
-                            <input type="radio" name="" id="fast">
-                            <label for="fast">Самый быстрый</label>
+                            <input class="tabs__check" type="radio" name="tabs" id="fast">
+                            <label class="tabs__label" for="fast">Самый быстрый</label>
                         </div>
                         <div class="tabs__item">
-                            <input type="radio" name="" id="optimal">
-                            <label for="optimal">Оптимальный</label>
+                            <input class="tabs__check" type="radio" name="tabs" id="optimal">
+                            <label class="tabs__label" for="optimal">Оптимальный</label>
                         </div>
                     </div>
                 </div>
@@ -80,16 +80,16 @@
                     <div class="ticket">
                         <div class="ticket__header">
                             <div class="ticket__price">
-
+                                13 400 Р
                             </div>
-                            <div class="ticket__company">
+                            <div class="ticket__company-logo">
                                 <img src="./images/logo-s7.png" alt="s7's logo">
                             </div>
                         </div>
                         <div class="ticket__body">
                             <div class="ticket__segment segment">
                                 <div class="segment__cell">
-                                    <div class="segment__origin-detination">
+                                    <div class="segment__route segment--title">
                                         MOW – HKT
                                     </div>
                                     <div class="segment__timestart-timeend">
@@ -97,7 +97,7 @@
                                     </div>
                                 </div>
                                 <div class="segment__cell">
-                                    <div class="segment__title">
+                                    <div class="segment--title">
                                         В пути
                                     </div>
                                     <div class="segment__duration">
@@ -105,7 +105,199 @@
                                     </div>
                                 </div>
                                 <div class="segment__cell">
-                                    <div class="segment__stops-count">
+                                    <div class="segment__stops-count segment--title">
+                                        2 пересадки
+                                    </div>
+                                    <div class="segment__stops-list">
+                                        HKG, JNB
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ticket__segment segment">
+                                <div class="segment__cell">
+                                    <div class="segment__route segment--title">
+                                        MOW – HKT
+                                    </div>
+                                    <div class="segment__timestart-timeend">
+                                        10:45 – 08:00
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment--title">
+                                        В пути
+                                    </div>
+                                    <div class="segment__duration">
+                                        21ч 15м
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment__stops-count segment--title">
+                                        2 пересадки
+                                    </div>
+                                    <div class="segment__stops-list">
+                                        HKG, JNB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ticket">
+                        <div class="ticket__header">
+                            <div class="ticket__price">
+                                13 400 Р
+                            </div>
+                            <div class="ticket__company-logo">
+                                <img src="./images/logo-s7.png" alt="s7's logo">
+                            </div>
+                        </div>
+                        <div class="ticket__body">
+                            <div class="ticket__segment segment">
+                                <div class="segment__cell">
+                                    <div class="segment__route segment--title">
+                                        MOW – HKT
+                                    </div>
+                                    <div class="segment__timestart-timeend">
+                                        10:45 – 08:00
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment--title">
+                                        В пути
+                                    </div>
+                                    <div class="segment__duration">
+                                        21ч 15м
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment__stops-count segment--title">
+                                        2 пересадки
+                                    </div>
+                                    <div class="segment__stops-list">
+                                        HKG, JNB
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ticket__segment segment">
+                                <div class="segment__cell">
+                                    <div class="segment__route segment--title">
+                                        MOW – HKT
+                                    </div>
+                                    <div class="segment__timestart-timeend">
+                                        10:45 – 08:00
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment--title">
+                                        В пути
+                                    </div>
+                                    <div class="segment__duration">
+                                        21ч 15м
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment__stops-count segment--title">
+                                        2 пересадки
+                                    </div>
+                                    <div class="segment__stops-list">
+                                        HKG, JNB
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="ticket__segment segment">
+                                <div class="segment__cell">
+                                    <div class="segment__route segment--title">
+                                        MOW – HKT
+                                    </div>
+                                    <div class="segment__timestart-timeend">
+                                        10:45 – 08:00
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment--title">
+                                        В пути
+                                    </div>
+                                    <div class="segment__duration">
+                                        21ч 15м
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment__stops-count segment--title">
+                                        2 пересадки
+                                    </div>
+                                    <div class="segment__stops-list">
+                                        HKG, JNB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ticket">
+                        <div class="ticket__header">
+                            <div class="ticket__price">
+                                13 400 Р
+                            </div>
+                            <div class="ticket__company-logo">
+                                <img src="./images/logo-s7.png" alt="s7's logo">
+                            </div>
+                        </div>
+                        <div class="ticket__body">
+                            <div class="ticket__segment segment">
+                                <div class="segment__cell">
+                                <div class="segment__route segment--title segment--title">
+                                        MOW – HKT
+                                    </div>
+                                    <div class="segment__timestart-timeend">
+                                        10:45 – 08:00
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment--title">
+                                        В пути
+                                    </div>
+                                    <div class="segment__duration">
+                                        21ч 15м
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment__stops-count segment--title">
+                                        2 пересадки
+                                    </div>
+                                    <div class="segment__stops-list">
+                                        HKG, JNB
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ticket">
+                        <div class="ticket__header">
+                            <div class="ticket__price">
+                                13 400 Р
+                            </div>
+                            <div class="ticket__company-logo">
+                                <img src="./images/logo-xiamen_air.png" alt="xiamenair's logo">
+                            </div>
+                        </div>
+                        <div class="ticket__body">
+                            <div class="ticket__segment segment">
+                                <div class="segment__cell">
+                                    <div class="segment__route segment--title">
+                                        MOW – HKT
+                                    </div>
+                                    <div class="segment__timestart-timeend">
+                                        10:45 – 08:00
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment--title">
+                                        В пути
+                                    </div>
+                                    <div class="segment__duration">
+                                        21ч 15м
+                                    </div>
+                                </div>
+                                <div class="segment__cell">
+                                    <div class="segment__stops-count segment--title">
                                         2 пересадки
                                     </div>
                                     <div class="segment__stops-list">
@@ -116,6 +308,7 @@
                         </div>
                     </div>
                 </div>
+                <button class="button--show-more">Показать еще 5 билетов!</button>
             </div>
         </div>
 
