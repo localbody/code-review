@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "Open Sans";
+    src: url("../css/fonts/opensans-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../css/fonts/opensans-semibold.woff2") format("woff2");
+    font-weight: 600;
+    font-style: normal;
+}
+
+:root {
+    --text-color: #4A4A4A;
+    --text-accent-color: #2196F3;
+    --text-gray-color: #A0B0B9;
+    --bg-color: #F3F7FA;
+    --bg-color-items: white;
+    --bg-selected-color: #2196F3;
+    --bg-hover-color: #F1FCFF;
+    --border-color: #DFE5EC;
+    --border-nochecked: #9ABBCE;
+    font-size: 12px;
+}
+
+@media (max-width: 770px) {
+    :root {
+        font-size: 11px;
+    }
+}
+
+html,
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    cursor: pointer;
+}
+
+body {
+    font-family: "Open Sans";
+    font-weight: 400;
+    font-style: normal;
+    text-rendering: auto;
+    background-color: var(--bg-color);
+    padding: 50px;
+}
+
+@media (max-width: 770px) {
+    body {
+        padding: 1em;
+    }
+}
