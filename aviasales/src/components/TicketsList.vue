@@ -1,8 +1,9 @@
 <template>
     <div class="tickets">
-        <ticket-item
+        <tickets-item
             v-for="ticket of tickets"
             :ticket="ticket"
+            :companies="companies"
             :key="ticket.id"
         />
     </div>
@@ -10,14 +11,18 @@
 </template>
 
 <script>
-    import TicketItem from '@/components/TicketItem.vue';
+    import TicketsItem from '@/components/TicketsItem.vue';
 
     export default {
         components: {
-            TicketItem,
+            TicketsItem,
         },
         props: {
             tickets: {
+                type: Object,
+                require: true,
+            },
+            companies: {
                 type: Object,
                 require: true,
             }
