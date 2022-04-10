@@ -208,7 +208,6 @@ export default {
                 sortedTickets = sortedTickets.sort( (a, b) => a.stops - b.stops )
             }
 
-
             return sortedTickets.slice(0, this.limitTickets)
         },
 
