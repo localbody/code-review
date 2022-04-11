@@ -5,6 +5,7 @@
             class="tabs__check"
             type="radio"
             name="tabs"
+            @change="onChange"
         />
         <label
             @click="changeOrder"
@@ -26,6 +27,9 @@
             },
         },
         methods: {
+            onChange(event) {
+                console.log(event)
+            },
             changeOrder(event) {
                 this.$emit('changeOrder', event.target.title)
             }
