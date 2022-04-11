@@ -12,47 +12,81 @@
                     <div class="filter">
                         <h4 class="filter__title">Количество пересадок</h4>
                         <div class="filter__items">
-                            <div class="filter__item">
-                                <input class="filter__check" type="checkbox" name="stops" id="var1" >
-                                <label class="filter__label filter__label--checkbox" for="var1">Без пересадок</label>
-                            </div>
-                            <div class="filter__item">
-                                <input class="filter__check" type="checkbox" name="stops" id="var2" >
-                                <label class="filter__label filter__label--checkbox" for="var2">1 пересадка</label>
-                            </div>
-                            <div class="filter__item">
-                                <input class="filter__check" type="checkbox" name="stops" id="var3">
-                                <label class="filter__label filter__label--checkbox" for="var3">2 пересадки</label>
-                            </div>
-                            <div class="filter__item">
-                                <input class="filter__check" type="checkbox" name="stops" id="var4">
-                                <label class="filter__label filter__label--checkbox" for="var4">3 пересадки</label>
+                            <div
+                                class="filter__item"
+                                v-for="item of filterStops"
+                                :key="item.value"
+                            >
+                                <input
+                                    class="filter__check"
+                                    type="checkbox"
+                                    name="stops"
+                                    :id="item.value"
+                                    :value="item.count"
+                                    v-model="activeFilterStops"
+                                >
+                                <label
+                                    class="filter__label filter__label--checkbox"
+                                    :for="item.value"
+                                >
+                                    {{item.title}}
+                                </label>
                             </div>
                         </div>
                     </div>
                     <div class="filter">
                         <h4 class="filter__title">Компания</h4>
                         <div class="filter__items">
-                            <div class="filter__item">
-                                <input class="filter__check" type="radio" name="company" id="all" checked>
-                                <label class="filter__label filter__label--radio" for="all">Все</label>
-                            </div>
-                            <div class="filter__item">
-                                <input class="filter__check" type="radio" name="company" id="s7">
-                                <label class="filter__label filter__label--radio" for="s7">S7 Airlines</label>
-                            </div>
-                            <div class="filter__item">
-                                <input class="filter__check" type="radio" name="company" id="xiamenair">
-                                <label class="filter__label filter__label--radio" for="xa">XiamenAir</label>
+                            <div
+                                class="filter__item"
+                                v-for="item of filterCompanies"
+                                :key="item.id"
+                            >
+                                <input
+                                    class="filter__check"
+                                    type="radio"
+                                    name="company"
+                                    :id="item.id"
+                                    :value="item.id"
+                                    v-model="activeFilterCompanies"
+                                >
+                                <label
+                                    class="filter__label filter__label--radio"
+                                    :for="item.id"
+                                >
+                                    {{item.name}}
+                                </label>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="body">
-                <tickets-tabs
-                    :tabsItems="tabsItems"
-                />
+                    <div class="tabs">
+                        <div class="tabs__items">
+                            <div
+                                class="tabs__item"
+                                v-for="item of tabsItems"
+                                :key="item.value"
+                            >
+                                <input
+                                    class="tabs__check"
+                                    :id="item.value"
+                                    type="radio"
+                                    name="tabs"
+                                    :value="item.value"
+                                    v-model="activeTab"
+                                />
+                                <label
+                                    class="tabs__label"
+                                    :for="item.value"
+                                >
+                                    {{item.title}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
 
                 <tickets-list
                     :tickets="ticketsFilterAndSorted"
@@ -75,12 +109,10 @@ import jsonTickets from '@/assets/json/tickets.json'
 import jsonSegments from '@/assets/json/segments.json'
 
 import TicketsList from '@/components/TicketsList.vue'
-import TicketsTabs from '@/components/TicketsTabs.vue'
 
 export default {
     components: {
         TicketsList,
-        TicketsTabs,
     },
     data() {
         return {
@@ -89,35 +121,59 @@ export default {
             jsonSegments,
             tickets: [],
             limitTickets: 5,
-            filterCompanyName: 'all',
-            filterStops: [0],
+            filterCompanies: [],
+            activeFilterCompanies: 0,
+            filterStops: [
+                {title: 'Без пересадок', value: 'withoutStops', count: 0},
+                {title: '1 пересадкa', value: 'oneStops', count: 1},
+                {title: '2 пересадки', value: 'twoStops', count: 2},
+                {title: '3 пересадки', value: 'threeStops', count: 3},
+            ],
+            activeFilterStops: [],
             orderBy: 'none',
 
             tabsItems: [
                 { value: 'price', title: 'Самый дешевый' },
                 { value: 'duration', title: 'Самый быстрый' },
                 { value: 'optimal', title: 'Оптимальный' },
-            ]
+            ],
+            activeTab: null,
         }
     },
     created() {
+        this.filterCompanies = jsonCompanies.map( item => {
+            return {
+                'name': item.name,
+                'id': item.id,
+            }})
+        this.filterCompanies.unshift({name: 'Все', id: 0})
         this.tickets =
-            jsonTickets.map((ticket) => {
-                let segm
+            jsonTickets.map( ticket => {
                 let segments = []
+                let duration = 0
+                let stops = 0
+                let stopsList = []
 
                 ticket.segments.forEach( ticketSegment => {
-                    segments.push( jsonSegments.find( segment => segment.id === ticketSegment) )
+                    let segment = jsonSegments.find( segment => segment.id === ticketSegment);
+                    segments.push( segment )
+                    duration = duration + segment.duration
+                    stops = stops + segment.stops.length
+                    stopsList.push(segment.stops.length)
                 })
 
                 return {
                     'id': ticket.id,
                     'price': ticket.price,
+                    'companyId': ticket.companyId,
                     'company': {
                         'name': jsonCompanies.find( company => company.id === ticket.companyId ).name,
                         'logo': jsonCompanies.find( company => company.id === ticket.companyId ).logo
                     },
-                    'segments': segments
+                    'segments': segments,
+                    'duration': duration,
+                    'stopsList': stopsList,
+                    'stops': stops,
                 }
             })
     },
@@ -125,16 +181,35 @@ export default {
         showMore() {
             this.limitTickets = this.limitTickets + 5
         },
-        onClick() {
-            console.log('click');
-        }
     },
     computed: {
         ticketsFilterAndSorted() {
-            return this.tickets.slice(0, this.limitTickets)
-        }
-    },
-    watch: {
+            let sortedTickets = [...this.tickets]
+
+            if (this.activeFilterCompanies !== 0 ) {
+                // фильтруем по компании
+                sortedTickets = sortedTickets.filter(item => item.companyId === this.activeFilterCompanies)
+            }
+
+            if (this.activeFilterStops.length) {
+                // фильтруем по пересадкам
+            }
+
+            if (this.activeTab === 'duration') {
+                // сортируем по продолжительности
+                sortedTickets = sortedTickets.sort( (a, b) => a.duration - b.duration )
+            }
+            if (this.activeTab === 'price') {
+                // сортируем по цене
+                sortedTickets = sortedTickets.sort( (a, b) => a.price - b.price )
+            }
+            if (this.activeTab === 'optimal') {
+                // сортируем по пересадкам
+                sortedTickets = sortedTickets.sort( (a, b) => a.stops - b.stops )
+            }
+
+            return sortedTickets.slice(0, this.limitTickets)
+        },
 
     },
 }
@@ -358,6 +433,5 @@ export default {
         border: 1px solid var(--bg-selected-color);
         color: white;
     }
-
 
 </style>
